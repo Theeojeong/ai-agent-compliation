@@ -3,23 +3,24 @@ import openai, json
 client = openai.OpenAI()
 messages = []
 
+# tool 정의
 def get_weather(city):
     return "33 degrees celcius."
-
 
 FUNCTION_MAP = {
     "get_weather": get_weather,
 }
 
-TOOLS = [
+# TOOLS에 담기
+TOOLS = [ # type, function
     {
         "type": "function",
-        "function": {
+        "function": { # name, description, parameters
             "name": "get_weather",
             "description": "A function to get the weather of a city.",
-            "parameters": {
+            "parameters": { # type, properties, required
                 "type": "object",
-                "properties": {
+                "properties": { # properties: 객체의 속성
                     "city": {
                         "type": "string",
                         "description": "The name of the city to get the weather of.",
@@ -37,11 +38,11 @@ from openai.types.chat import ChatCompletionMessage
 def process_ai_response(message: ChatCompletionMessage):
 
     if message.tool_calls:
-        messages.append(
-            {
+        messages.append( # role, content, tool_calls
+            {   
                 "role": "assistant",
                 "content": message.content or "",
-                "tool_calls": [
+                "tool_calls": [ # id, type, function
                     {
                         "id": tool_call.id,
                         "type": "function",
@@ -66,7 +67,7 @@ def process_ai_response(message: ChatCompletionMessage):
             except json.JSONDecodeError:
                 arguments = {}
 
-            function_to_run = FUNCTION_MAP.get(function_name)
+            function_to_run = FUNCTION_MAP.get(function_name) # 문자열 -> 함수 객체 변환
 
             result = function_to_run(**arguments)
 
@@ -75,9 +76,9 @@ def process_ai_response(message: ChatCompletionMessage):
             messages.append(
                 {
                     "role": "tool",
-                    "tool_call_id": tool_call.id,
-                    "name": function_name,
                     "content": result,
+                    "tool_call_id": tool_call.id,
+                    "name": function_name
                 }
             )
 
