@@ -1,0 +1,1 @@
+It appears that no qualifying articles (URLs) were retrieved with the given filters. To generate the requested multi-tier summaries, please provide the list of article URLs or broaden the date range/criteria so we can locate and extract the full content.
