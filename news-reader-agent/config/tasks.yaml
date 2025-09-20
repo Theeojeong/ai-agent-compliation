@@ -1,0 +1,20 @@
+translate_task:
+  description: >
+    Translate {sentence} from english to korean with out making mistakes.
+  expected_output: >
+    A well formatted translation from English to Korean using proper capitalization of names and places.
+  agent: translator_agent
+
+retranslate_task:
+  description: >
+    Translate {sentence} from Korean to Chinese with out making mistakes.
+  expected_output: >
+    A well formatted translation from Korean to Chinese using proper capitalization of names and places.
+  agent: translator_agent
+
+counter_task:
+  description: >
+    문장의 글자 수를 실수없이 세어주세요.
+  expected_output: >
+    문장에 들어 있는 글자의 수
+  agent: counter_agent
