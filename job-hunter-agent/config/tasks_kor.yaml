@@ -1,0 +1,127 @@
+job_extraction_task:
+  description: >
+    {location}에서 {level} 수준의 {position} 채용공고를 찾고 추출하세요.
+
+    단계:
+    1. 웹 검색 도구를 사용해 {location}의 {level} 수준 {position} 채용공고를 검색합니다.
+    2. 검색 결과에서 채용공고를 추출합니다.
+    3. {location}의 {level} 수준 {position}이 아닌 공고를 필터링합니다.
+  expected_output: >
+    `JobList` 스키마와 일치하는 JSON 객체.
+  agent: job_search_agent
+
+job_matching_task:
+  description: >
+    당신은 커리어 매칭 전문가입니다.
+
+    추출된 채용 목록(JobList)과 사용자의 이력서를 바탕으로 각 공고가 다음 항목과 얼마나 맞는지 평가하세요:
+    - 기술 스택
+    - 롤 레벨
+    - 산업 및 회사 규모 선호
+    - 원격/근무 유연성
+    - 고용 형태
+    - 연봉 기대치
+    - 이력서 내 키워드와 감점 요인
+
+    각 공고에 대해 `match_score`를 1(부적합)에서 5(완벽히 적합)까지 부여하고, 그 이유를 설명하세요.
+
+    각 공고에 `match_score`와 `reason` 필드를 추가하세요.
+    원래 필드는 변경하거나 제거하지 마세요.
+  expected_output: >
+    기존 `Job` 스키마와 동일하되, 각 공고에 다음 2개 필드가 추가된 JSON 객체:
+    - match_score: 1~5의 정수
+    - reason: 점수에 대한 짧은 설명
+  agent: job_matching_agent
+
+job_selection_task:
+  description: >
+    당신은 채용 선택 전문가입니다.
+
+    `match_score`와 `reason`이 포함된 공고 목록(RankedJobList)을 받아:
+    1. 점수와 사유를 분석해 **최적 공고**를 결정합니다.
+    2. 사용자의 선호, 역량, 목표에 가장 근접한 단 하나의 공고를 선택합니다.
+    3. 이력서-공고 정합성에 근거한 간결한 `reason`을 작성합니다.
+    4. 최상 공고의 `selected`를 true로, 나머지는 false로 설정합니다.
+
+    원래 필드 내용(예: job_title, company_name 등)은 변경하지 마세요.
+  expected_output: >
+    선택된 공고의 `ChosenJob` 스키마와 일치하는 JSON 객체.
+  agent: job_matching_agent
+
+resume_rewriting_task:
+  description: >
+    당신은 이력서 최적화 전문가입니다.
+
+    포함된 지식 소스로 제공된 사용자의 실제 이력서와 선택된 공고(ChosenJob)를 바탕으로
+    **기존 이력서**를 **해당 공고에 맞게 재작성**하되, **사실을 과장하거나 조작하지 마세요**.
+
+    초점:
+    - 관련 기술, 프로젝트, 성과의 재배치·재서술·강조
+    - 요약 및 경력 bullet을 공고 핵심 요구와 키워드에 맞춰 재작성
+    - 공고의 톤, 기술 초점, 용어를 반영
+    - 사용자의 실제 경력만 유지
+
+    무관한 내용은 삭제하거나, 제목을 약간 명확히 바꿀 수 있으나
+    **가짜 회사·기술·일자·역할을 추가하면 안 됩니다**.
+  expected_output: >
+    선택된 공고에 맞춰 재작성된 **사용자의 실제 이력서**의 Markdown 버전.
+    이력서는 사실에 근거하며 사용자의 실제 이력만 포함해야 합니다.
+  agent: resume_optimization_agent
+  output_file: output/rewritten_resume.md
+  create_directory: true
+  markdown: true
+
+company_research_task:
+  description: >
+    당신은 기업 조사 및 면접 준비 전문가입니다.
+
+    선택된 공고(ChosenJob)를 기준으로 공개 웹 자료를 조사하세요.
+    목표:
+    1. 회사 규모, 산업, 미션, 가치, 최근 뉴스 파악
+    2. 공고를 분석해 팀 구조와 제품 맥락 추정
+    3. 예상 면접 토픽과 질문 제안
+    4. 지원자가 면접에서 물을 수 있는 인사이트 있는 질문 작성
+
+    회사 웹사이트, 보도자료, 블로그, 소셜 미디어, 리뷰를 활용하세요.
+  expected_output: >
+    다음 섹션을 포함한 Markdown 파일:
+    - ## Company Overview
+    - ## Mission and Values
+    - ## Recent News or Changes
+    - ## Role Context and Product Involvement
+    - ## Likely Interview Topics
+    - ## Suggested Questions to Ask
+  agent: company_research_agent
+  markdown: true
+  output_file: output/company_research.md
+
+interview_prep_task:
+  description: >
+    당신은 면접 준비 코치입니다.
+
+    아래 정보를 결합해 상세 면접 준비 문서를 작성하세요:
+    1. 선택된 공고(ChosenJob)
+    2. 맞춤 이력서(RewrittenResume)
+    3. 기업 조사 요약(CompanyResearch)
+
+    문서에는 다음이 포함되어야 합니다:
+    - 직무 요약과 적합 이유
+    - 해당 직무에 맞춘 이력서 핵심 요약
+    - 회사, 제품, 가치의 간결 요약
+    - 공고와 회사 기반의 예상 면접 질문
+    - 지원자가 물을 맞춤 질문
+    - 톤, 중점 영역, 유의해야 할 리스크에 대한 조언
+
+    문서는 간결하되 충분히 종합적이어야 합니다. 필요하면 충분한 분량으로 작성하세요.
+  expected_output: >
+    "Interview Prep: $CompanyName – $JobTitle" 제목의 Markdown 문서로 다음 섹션 포함:
+    - ## Job Overview
+    - ## Why This Job Is a Fit
+    - ## Resume Highlights for This Role
+    - ## Company Summary
+    - ## Predicted Interview Questions
+    - ## Questions to Ask Them
+    - ## Concepts To Know/Review
+    - ## Strategic Advice
+  agent: interview_prep_agent
+  output_file: output/interview_prep.md

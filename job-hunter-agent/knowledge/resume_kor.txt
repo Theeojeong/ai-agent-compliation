@@ -1,0 +1,88 @@
+후안 스리사이웡
+
+풀스택 개발자
+
+📧 juan.srisaiwong@email.com
+ | 📱 +34 612 345 678
+🌐 LinkedIn: linkedin.com/srisaiwong | GitHub: github.com/srisaiwong
+📍 코펜하겐, 덴마크
+
+전문 요약
+
+3년 경력의 풀스택 개발자. 확장 가능한 웹 애플리케이션과 현대적 UI를 설계·구축. React, Node.js 중심의 자바스크립트 생태계와 클라우드 기술에 숙련. 문제 해결 능력과 협업 중심의 태도로 고품질 소프트웨어를交부.
+
+기술 스택
+
+프론트엔드: React, Vue.js, HTML5, CSS3, Sass, TypeScript, JavaScript(ES6+), Bootstrap, Tailwind CSS
+백엔드: Node.js, Express.js, Python, Django, RESTful APIs, GraphQL
+데이터베이스: PostgreSQL, MySQL, MongoDB, Redis
+클라우드·DevOps: AWS(EC2, S3, Lambda), Docker, CI/CD, Git, GitHub Actions
+도구: VS Code, Postman, Figma, Jira, Slack
+
+경력
+풀스택 개발자
+
+TechSolutions Madrid | 마드리드, 스페인 | 2022.03 – 현재
+
+React와 Node.js로 1만+ 사용자 대상 웹앱 5개 이상 개발·운영
+
+반응형 디자인 적용으로 모바일 사용자 참여도 40% 향상
+
+서드파티 연동 포함 RESTful API 구축으로 데이터 처리시간 25% 단축
+
+애자일 협업으로 크로스펑셔널 팀과 공동 작업
+
+쿼리 최적화로 페이지 로드 시간 30% 개선
+
+주니어 풀스택 개발자
+
+StartupLab Barcelona | 바르셀로나, 스페인 | 2021.06 – 2022.02
+
+Vue.js와 Express.js 기반 전자상거래 플랫폼 개발 참여
+
+사용자 인증·인가 시스템 구현
+
+코드 리뷰 참여 및 코드 품질 표준 유지
+
+사용자 피드백 기반 버그 수정 및 기능 추가
+
+배포 및 서버 운영 보조
+
+교육
+컴퓨터공학 학사
+
+마드리드 공과대학교(Universidad Politécnica de Madrid) | 마드리드, 스페인 | 2017 – 2021
+주요 이수 과목: 자료구조, 알고리즘, 데이터베이스 시스템, 소프트웨어 공학, 웹 개발
+
+프로젝트
+이커머스 대시보드
+
+React, Node.js, PostgreSQL, AWS
+
+상품·주문·고객 관리용 관리자 대시보드 구축
+
+실시간 분석 및 리포팅 기능 구현
+
+AWS 배포 및 자동화 CI/CD 파이프라인 구성
+
+작업 관리 앱
+
+Vue.js, Express.js, MongoDB
+
+실시간 협업형 작업 관리 애플리케이션 개발
+
+사용자 인증 및 역할 기반 권한 시스템 통합
+
+드래그앤드롭과 알림 기능 구현
+
+언어
+
+스페인어: 모국어
+영어: 업무 전문(C1)
+카탈루냐어: 일상 회화(B2)
+
+자격증
+
+AWS Certified Developer – Associate (2023)
+
+React Developer Certification – Meta (2022)

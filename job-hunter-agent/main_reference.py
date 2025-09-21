@@ -38,7 +38,7 @@ class JobHunterCrew:
     def job_extraction_task(self):
         return Task(
             config=self.tasks_config["job_extraction_task"],
-            output_pydantic=JobList,
+            output_pydantic=JobList, # -> 출력 스키마 정의
         )
 
     @task
@@ -59,7 +59,7 @@ class JobHunterCrew:
     def resume_rewriting_task(self):
         return Task(
             config=self.tasks_config["resume_rewriting_task"],
-            context=[
+            context=[ # -> 어떤 task로 부터 input을 받을지 정의
                 self.job_selection_task(),
             ],
         )
