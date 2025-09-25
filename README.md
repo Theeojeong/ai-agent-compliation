@@ -1,55 +1,12 @@
-# 🧠 AI Agent Compilation — 실사용 중심 멀티 에이전트 컬렉션
+# 🧠 실사용 중심 AI Agent 컬렉션
 
-실제 업무/학습 환경에서 바로 쓸 수 있는 에이전트들을 모았습니다. 목적별로 최적화되어 있으며, 설치와 실행이 간단합니다.
+실제 업무/학습 환경에서 바로 쓸 수 있는 에이전트들을 만들어 보았습니다.
 
 포함된 에이전트: `content-pipline-agent`, `job-hunter-agent`, `news-reader-agent`
 
 ---
 
-## 🚀 공통 사양
-
-- 런타임: Python >= 3.13
-- 프레임워크: crewai[tools]
-- 패키지 관리자: uv 또는 pip
-- 환경 변수: `.env`에 다음 값을 설정하세요
-
-(.env):
-
-```bash
-OPENAI_API_KEY=sk-...
-SERPER_API_KEY=serper_...
-FIRECRAWL_API_KEY=fc_...
-```
-
-설치/실행 공통 예시:
-
-```bash
-# uv (권장)
-cd <agent-folder>
-uv sync
-uv run python main.py  # 또는 main_reference.py
-
-# pip
-python -m venv .venv && source .venv/bin/activate  # Windows: .venv\Scripts\activate
-pip install -e .
-python main.py  # 또는 main_reference.py
-```
-
-Playwright 사용 에이전트는 브라우저 바이너리가 필요합니다:
-
-```bash
-uv run playwright install  # 또는: python -m playwright install
-```
-
----
-
-## ✍️ 프로젝트 참여자
-
-- 프로젝트 소유/메인터너: 정재현
-
----
-
-## 📦 content-pipline-agent
+## 📦 1. content-pipline-agent
 
 - 프로젝트명: "content-pipline-agent"
 - 설명: Firecrawl 기반의 신뢰도 높은 웹 검색/스크랩 툴을 갖춘 콘텐츠 리서치 파이프라인. 마크다운을 정제해 요약/분류 등 후속 태스크에 적합한 입력으로 제공합니다.
@@ -58,8 +15,8 @@ uv run playwright install  # 또는: python -m playwright install
 
 ```bash
 cd content-pipline-agent
-uv sync  # 또는 pip install -e .
-touch .env  # 환경 변수 작성
+uv sync
+touch .env
 uv run python main.py
 ```
 
@@ -96,7 +53,7 @@ def web_search_tool(query: str):
 
 ---
 
-## 💼 job-hunter-agent
+## 💼 2. job-hunter-agent
 
 - 프로젝트명: "job-hunter-agent"
 - 설명: 공고 수집 → 매칭 점수화 → 포지션 선택 → 이력서 리라이트 → 기업 분석 → 면접 준비까지 이어지는 풀 파이프라인 멀티 에이전트. `pydantic` 스키마로 출력 구조를 엄격히 보장합니다.
@@ -105,8 +62,8 @@ def web_search_tool(query: str):
 
 ```bash
 cd job-hunter-agent
-uv sync  # 또는 pip install -e .
-touch .env  # 환경 변수 작성
+uv sync
+touch .env
 uv run python main_reference.py
 ```
 
@@ -157,7 +114,7 @@ class ChosenJob(BaseModel):
 
 ---
 
-## 📰 news-reader-agent
+## 📰 3. news-reader-agent
 
 - 프로젝트명: "news-reader-agent"
 - 설명: 주제 기반 뉴스 수집 → 3단계 요약(Headline/Executive/Comprehensive) → 에디토리얼 큐레이션 자동화. Serper 검색 + Playwright 스크랩으로 폭넓고 신뢰도 높은 수집을 수행합니다.
@@ -166,9 +123,9 @@ class ChosenJob(BaseModel):
 
 ```bash
 cd news-reader-agent
-uv sync  # 또는 pip install -e .
+uv sync
 uv run playwright install
-touch .env  # 환경 변수 작성
+touch .env
 uv run python main.py
 ```
 
