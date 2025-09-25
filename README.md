@@ -163,6 +163,40 @@ def scrape_tool(url: str):
 
 ---
 
+## 💬 4. chatgpt-clone
+
+- 프로젝트명: "chatgpt-clone"
+- 설명: Streamlit 기반의 채팅 UI로, `openai-agents`를 활용해 웹 검색(WebSearchTool)과 파일 검색(FileSearchTool)을 결합합니다. 대화 이력은 로컬 SQLite에 저장되며, 스트리밍 응답과 진행 상태 표시를 제공합니다.
+
+### 실행
+
+URL: https://theeojeong-ai-agent-compliation-chatgpt-clonemain-zxfczg.streamlit.app/
+
+### 중요한 코드
+
+Agent/세션 초기화 요약:
+
+```python
+agent = Agent(
+    name="ChatGPT Clone",
+    instructions="You are a helpful assistant...",
+    tools=[
+        WebSearchTool(),
+        FileSearchTool(vector_store_ids=[VECTOR_STORE_ID], max_num_results=3)
+    ]
+)
+
+session = SQLiteSession("user1", "user-memory.db")
+```
+
+요점
+
+- Streamlit 채팅 UI + 파일 업로드(.txt) 지원
+- 웹/파일 검색 호출 시 상태 메시지로 진행 상황 가시화
+- 로컬 SQLite(`user-memory.db`)에 대화 메모리 영구 저장
+
+---
+
 ## 🙌 기여 방법
 
 ```bash
