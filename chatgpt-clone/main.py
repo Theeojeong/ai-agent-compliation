@@ -1,13 +1,15 @@
 from dotenv import load_dotenv
 load_dotenv()
-
+import os
 from openai import OpenAI
 import streamlit as st
 import base64
 from agents import Agent, SQLiteSession, Runner, WebSearchTool, FileSearchTool
 import asyncio
 
-client = OpenAI()
+OPENAI_API_KEY=os.getenv("OPENAI_API_KEY")
+
+client = OpenAI(api_key=OPENAI_API_KEY)
 
 VECTOR_STORE_ID = "vs_68d54976ba1081918d88a11c80b1e5e8"
 
