@@ -4,7 +4,16 @@ load_dotenv()
 from openai import OpenAI
 import streamlit as st
 import base64
-from agents import Agent, SQLiteSession, Runner, WebSearchTool, FileSearchTool
+from agents import (
+    Agent, 
+    SQLiteSession, 
+    Runner, 
+    WebSearchTool, 
+    FileSearchTool,
+    ImageGenerationTool,
+    CodeInterpreterTool,
+    HostedMCPTool
+    )
 import asyncio
 
 client = OpenAI()
@@ -26,8 +35,35 @@ if "agent" not in st.session_state:
             FileSearchTool(
             vector_store_ids=[VECTOR_STORE_ID],
             max_num_results=3
-        )]
-    )
+        ),
+            ImageGenerationTool(
+                tool_config={
+                    "type": "image_generation",
+                    "quality": "high",
+                    "output_format": "jpeg",
+                    "partial_images": 1,
+                }
+            ),
+            # CodeInterpreterTool(
+            #     tool_config={
+            #         "type": "code_interpreter",
+            #         "container":{
+            #             "type": "auto",
+            #             "force_new": True
+            #         }
+            #     }
+            # ),
+            HostedMCPTool(
+                tool_config={
+                    "type": "mcp",
+                    "server_label": "context7",
+                    "server_url": "https://mcp.context7.com/mcp",
+                    "server_description": "Use this to get the docs from software projects.",
+                    "require_approval": "never"
+                }
+            )
+    ]
+)
 agent = st.session_state["agent"]
 
 if "session" not in st.session_state:
@@ -69,6 +105,17 @@ async def paint_history():
                 with st.chat_message('ai'):
                     st.write("🔍 Searched the files...")
 
+            elif message["type"] == "image_generation_call":
+                with st.chat_message('ai'):
+                    image = base64.b64decode(message["result"])
+                    st.image(image)
+            elif message["type"] == "code_interpreter_call":
+                with st.chat_message('ai'):
+                    st.code(message['code'])
+            elif message["type"] == "mcp_list_tools":
+                with st.chat_message('ai'):
+                    st.write(message['server_label'])
+
 asyncio.run(paint_history())
 #==================================== RUN =========================================
 
@@ -79,6 +126,22 @@ def update_status(status_container, event):
         'response.file_search_call.completed': ("파일 탐색 완료", "complete"),
         'response.file_search_call.in_progress': ("파일 탐색 중", "running"),
         'response.file_search_call.searching': ("파일 탐색 중", "running"),
+        'response.image_generation_call.completed': ("이미지 생성 완료", "complete"),
+        'response.image_generation_call.generating': ("이미지 생성 중", "running"),
+        'response.image_generation_call.in_progress': ("이미지 생성 중", "running"),
+        'response.image_generation_call.partial_image':("이미지 생성 중", "running"),
+        'response.code_interpreter_call_code.done': ("코드 작성 중", "running"),
+        'response.code_interpreter_call.completed': ("코드 작성 완료", "complete"),
+        'response.code_interpreter_call.in_progress': ("코드 작성 중", "running"),
+        'response.code_interpreter_call.interpreting':("코드 작성 중", "running"),
+        'response.mcp_call_arguments.delta': ("mcp 호출 중", "running") , 
+        'response.mcp_call_arguments.done': ("mcp 호출 중", "complete"), 
+        'response.mcp_call.completed': ("mcp 호출 완료", "running"), 
+        'response.mcp_call.failed': ("mcp 호출 실패", "error"), 
+        'response.mcp_call.in_progress': ("mcp 호출 중", "running"), 
+        'response.mcp_list_tools.completed': ("MCP 도구 목록 가져오기 완료", "complete"), 
+        'response.mcp_list_tools.failed': ("MCP 도구 목록 가져오기 실패", "error"), 
+        'response.mcp_list_tools.in_progress': ("MCP 도구 목록을 가져오는 중", "running"),
         "response.completed": (" ", "complete")
         }
 
@@ -90,8 +153,11 @@ def update_status(status_container, event):
 async def run_agent(message):
     with st.chat_message('ai'):
         status_container = st.status("⏳", expanded=False)
+        code_placeholder = st.empty()
+        image_placeholder = st.empty()
         text_placeholder = st.empty()
         response = ""
+        code_response = ""
 
         stream = Runner.run_streamed(
             agent,
@@ -107,6 +173,14 @@ async def run_agent(message):
                 if event.data.type == "response.output_text.delta":
                     response += event.data.delta
                     text_placeholder.write(response)
+                if event.data.type == "response.code_interpreter_call_code.delta":
+                    code_response += event.data.delta
+                    code_placeholder.code(code_response)
+                elif event.data.type == "response.image_generation_call.partial_image":
+                    image = base64.b64decode(event.data.partial_image_b64)
+                    image_placeholder.image(image)
+
+
 
 prompt = st.chat_input(
     "Agent에게 질문해주세요. 이미지 업로드 가능",
@@ -115,7 +189,7 @@ prompt = st.chat_input(
         "txt",
         "jpg",
         "jpeg",
-        "png"
+        "png",
     ]
 )
 
