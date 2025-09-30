@@ -9,7 +9,7 @@
 ## 📦 1. content-pipline-agent
 
 - 프로젝트명: "content-pipline-agent"
-- 설명: Firecrawl 기반의 신뢰도 높은 웹 검색/스크랩 툴을 갖춘 콘텐츠 리서치 파이프라인. 마크다운을 정제해 요약/분류 등 후속 태스크에 적합한 입력으로 제공합니다.
+- 설명: Firecrawl 기반의 신뢰도 높은 웹 검색/스크랩 툴을 갖춘 콘텐츠 리서치 Agent.
 
 ### 설치 및 실행
 
@@ -20,7 +20,7 @@ touch .env
 uv run python main.py
 ```
 
-필요 변수: `OPENAI_API_KEY`, `FIRECRAWL_API_KEY`
+필요 API Key: `OPENAI_API_KEY`, `FIRECRAWL_API_KEY`
 
 ### 중요한 코드
 
@@ -56,7 +56,7 @@ def web_search_tool(query: str):
 ## 💼 2. job-hunter-agent
 
 - 프로젝트명: "job-hunter-agent"
-- 설명: 공고 수집 → 매칭 점수화 → 포지션 선택 → 이력서 리라이트 → 기업 분석 → 면접 준비까지 이어지는 풀 파이프라인 멀티 에이전트. `pydantic` 스키마로 출력 구조를 엄격히 보장합니다.
+- 설명: 공고 수집 → 매칭 점수화 → 포지션 선택 → 이력서 rewrite → 기업 분석 → 면접 준비까지 이어지는 풀 파이프라인 멀티 Agent.
 
 ### 설치 및 실행
 
@@ -67,7 +67,7 @@ touch .env
 uv run python main_reference.py
 ```
 
-필요 변수: `OPENAI_API_KEY`, `FIRECRAWL_API_KEY`
+필요 API Key: `OPENAI_API_KEY`, `FIRECRAWL_API_KEY`
 
 ### 파이프라인 개요
 
@@ -117,7 +117,7 @@ class ChosenJob(BaseModel):
 ## 📰 3. news-reader-agent
 
 - 프로젝트명: "news-reader-agent"
-- 설명: 주제 기반 뉴스 수집 → 3단계 요약(Headline/Executive/Comprehensive) → 에디토리얼 큐레이션 자동화. Serper 검색 + Playwright 스크랩으로 폭넓고 신뢰도 높은 수집을 수행합니다.
+- 설명: 주제 기반 뉴스 수집 → 3단계 요약(Headline/Executive/Comprehensive) → 에디토리얼 큐레이션 자동화. Serper 검색 + Playwright 스크랩으로 폭넓고 신뢰도 높은 수집을 수행하는 Agent.
 
 ### 설치 및 실행
 
@@ -129,7 +129,7 @@ touch .env
 uv run python main.py
 ```
 
-필요 변수: `OPENAI_API_KEY`, `SERPER_API_KEY`
+필요 API Key: `OPENAI_API_KEY`, `SERPER_API_KEY`
 
 ### 중요한 코드
 
@@ -166,7 +166,8 @@ def scrape_tool(url: str):
 ## 💬 4. chatgpt-clone
 
 - 프로젝트명: "chatgpt-clone"
-- 설명: Streamlit 기반의 채팅 UI로, `openai-agents`를 활용해 웹 검색(WebSearchTool)과 파일 검색(FileSearchTool)을 결합합니다. 대화 이력은 로컬 SQLite에 저장되며, 스트리밍 응답과 진행 상태 표시를 제공합니다.
+- 설명: Streamlit 기반의 채팅 UI를 사용해, ChatGPT를 완벽 복제한 Agent.
+  `OpenAI Agent SDK`를 활용해 웹 검색(WebSearchTool)과 파일 검색(FileSearchTool) 등등을을 결합합니다. 대화 이력은 로컬 SQLite에 저장되며, 스트리밍 응답과 진행 상태 표시를 제공합니다.
 
 ### 실행
 
