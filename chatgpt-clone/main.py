@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 load_dotenv()
-
+import openai
 from openai import OpenAI
 import streamlit as st
 import base64
@@ -16,55 +16,11 @@ from agents import (
     )
 import asyncio
 
+from agents.mcp.server import MCPServerStdio
+
 client = OpenAI()
 
 VECTOR_STORE_ID = "vs_68d54976ba1081918d88a11c80b1e5e8"
-
-if "agent" not in st.session_state:
-    st.session_state["agent"] = Agent(
-        name="ChatGPT Clone",
-        instructions="""
-        You are a helpful assistant.
-
-        You have access to the followign tools:
-            - Web Search Tool: Use this when the user asks a questions that isn't in your training data. Use this tool when the users asks about current or future events, when you think you don't know the answer, try searching for it in the web first.
-            - File Search Tool: Use this tool when the user asks a question about facts related to themselves. Or when they ask questions about specific files. 파일에 명시되어 있지 않은 정보는 웹서치 도구를 활용하세요.
-        """,
-        tools=[
-            WebSearchTool(), 
-            FileSearchTool(
-            vector_store_ids=[VECTOR_STORE_ID],
-            max_num_results=3
-        ),
-            ImageGenerationTool(
-                tool_config={
-                    "type": "image_generation",
-                    "quality": "high",
-                    "output_format": "jpeg",
-                    "partial_images": 1,
-                }
-            ),
-            # CodeInterpreterTool(
-            #     tool_config={
-            #         "type": "code_interpreter",
-            #         "container":{
-            #             "type": "auto",
-            #             "force_new": True
-            #         }
-            #     }
-            # ),
-            HostedMCPTool(
-                tool_config={
-                    "type": "mcp",
-                    "server_label": "context7",
-                    "server_url": "https://mcp.context7.com/mcp",
-                    "server_description": "Use this to get the docs from software projects.",
-                    "require_approval": "never"
-                }
-            )
-    ]
-)
-agent = st.session_state["agent"]
 
 if "session" not in st.session_state:
     st.session_state["session"] = SQLiteSession(
@@ -151,34 +107,95 @@ def update_status(status_container, event):
 #==================================== RUN =========================================
 
 async def run_agent(message):
-    with st.chat_message('ai'):
-        status_container = st.status("⏳", expanded=False)
-        code_placeholder = st.empty()
-        image_placeholder = st.empty()
-        text_placeholder = st.empty()
-        response = ""
-        code_response = ""
+    yhfinance_mcp = MCPServerStdio(
+        params={
+            "command": "uvx",
+            "args": ["mcp-yahoo-finance"]
+        },
+        cache_tools_list=True
+    )
+    timezone_server = MCPServerStdio(
+        params={
+            "command": "uvx",
+            "args": ["mcp-server-time", "--local-timezone=Asia/Seoul"]
+        }
+    )
 
-        stream = Runner.run_streamed(
-            agent,
-            message,
-            session=session
-        )
+    async with yhfinance_mcp, timezone_server:
+        agent = Agent(
+            mcp_servers=[
+                yhfinance_mcp,
+                timezone_server,
+            ],
+            name="ChatGPT Clone",
+            instructions="""
+            You are a helpful assistant.
 
-        async for event in stream.stream_events():
-            if event.type == "raw_response_event":
+            You have access to the followign tools:
+                - Web Search Tool: Use this when the user asks a questions that isn't in your training data. Use this tool when the users asks about current or future events, when you think you don't know the answer, try searching for it in the web first.
+                - File Search Tool: Use this tool when the user asks a question about facts related to themselves. Or when they ask questions about specific files. 파일에 명시되어 있지 않은 정보는 웹서치 도구를 활용하세요.
+            """,
+            tools=[
+                WebSearchTool(), 
+                FileSearchTool(
+                vector_store_ids=[VECTOR_STORE_ID],
+                max_num_results=3
+            ),
+                ImageGenerationTool(
+                    tool_config={
+                        "type": "image_generation",
+                        "quality": "high",
+                        "output_format": "jpeg",
+                        "partial_images": 1,
+                    }
+                ),
+                CodeInterpreterTool(
+                    tool_config={
+                        "type": "code_interpreter",
+                        "container":{
+                            "type": "auto",
+                        }
+                    }
+                ),
+                HostedMCPTool(
+                    tool_config={
+                        "type": "mcp",
+                        "server_label": "context7",
+                        "server_url": "https://mcp.context7.com/mcp",
+                        "server_description": "Use this to get the docs from software projects.",
+                        "require_approval": "never"
+                    }
+                )
+        ]
+    )
+        with st.chat_message('ai'):
+            status_container = st.status("⏳", expanded=False)
+            code_placeholder = st.empty()
+            image_placeholder = st.empty()
+            text_placeholder = st.empty()
+            response = ""
+            code_response = ""
 
-                update_status(status_container, event.data.type)
+            stream = Runner.run_streamed(
+                agent,
+                message,
+                session=session
+            )
 
-                if event.data.type == "response.output_text.delta":
-                    response += event.data.delta
-                    text_placeholder.write(response)
-                if event.data.type == "response.code_interpreter_call_code.delta":
-                    code_response += event.data.delta
-                    code_placeholder.code(code_response)
-                elif event.data.type == "response.image_generation_call.partial_image":
-                    image = base64.b64decode(event.data.partial_image_b64)
-                    image_placeholder.image(image)
+            async for event in stream.stream_events():
+                if event.type == "raw_response_event":
+
+                    update_status(status_container, event.data.type)
+
+                    if event.data.type == "response.output_text.delta":
+                        response += event.data.delta
+                        text_placeholder.write(response)
+                    if event.data.type == "response.code_interpreter_call_code.delta":
+                        code_response += event.data.delta
+                        code_placeholder.code(code_response)
+                    elif event.data.type == "response.image_generation_call.partial_image":
+                        image = base64.b64decode(event.data.partial_image_b64)
+                        image_placeholder.image(image)
 
 
 
@@ -237,6 +254,8 @@ if prompt:
         with st.chat_message('user'):
             st.write(prompt.text)
         asyncio.run(run_agent(prompt.text))
+
+#==================================== Side Bar =========================================
 
 with st.sidebar:
     push = st.button("db 초기화 버튼")
