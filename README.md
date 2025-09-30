@@ -20,7 +20,7 @@ touch .env
 uv run python main.py
 ```
 
-필요 API Key: `OPENAI_API_KEY`, `FIRECRAWL_API_KEY`
+필요 API Key: `OPENAI_API_KEY`, `FIRECRAWL_API_KEY`, `FIRECRAWL_ACCESS_TOKEN`
 
 ### 중요한 코드
 
