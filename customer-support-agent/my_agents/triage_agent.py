@@ -22,7 +22,11 @@ async def off_topic_guardrail(
     agent: Agent[UserAccountContext],
     input: str,
 ):
-    result = await Runner.run(input_guardrail_agent, input, context=wrapper.context)
+    result = await Runner.run(
+        input_guardrail_agent, 
+        input, 
+        context=wrapper.context
+    )
 
     return GuardrailFunctionOutput(
         output_info=result.final_output,
@@ -31,7 +35,8 @@ async def off_topic_guardrail(
 
 
 def dynamic_triage_agent_instructions(
-    wrapper: RunContextWrapper[UserAccountContext], agent=Agent[UserAccountContext]
+    wrapper: RunContextWrapper[UserAccountContext], 
+    agent=Agent[UserAccountContext]
 ):
     return f"""
     You are a customer support agent. You ONLY help customers with their questions about their User Account, Billing, Orders, or Technical Support.
@@ -90,5 +95,7 @@ def dynamic_triage_agent_instructions(
 triage_agent = Agent(
     name="Triage_Agent",
     instructions=dynamic_triage_agent_instructions,
-    input_guardrails=[off_topic_guardrail],
+    input_guardrails=[
+        off_topic_guardrail
+    ],
 )

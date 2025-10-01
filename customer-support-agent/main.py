@@ -5,25 +5,27 @@ load_dotenv()
 import streamlit as st
 import asyncio
 import openai
-from agents import Agent, Runner, SQLiteSession, function_tool, RunContextWrapper
+from agents import (
+    Runner,
+    SQLiteSession,
+    RunContextWrapper,
+    InputGuardrailTripwireTriggered,
+)
 from models import UserAccountContext
 from my_agents.triage_agent import triage_agent
 
 
-@function_tool
-def get_user_tier(wrapper: RunContextWrapper[UserAccountContext]):
-    return (
-        f"The user {wrapper.context.customer_id} has a {wrapper.context.tier} account."
-    )
-
-
 client = openai.OpenAI()
 
-user_account_context = UserAccountContext(name="theo", customer_id=1, tier="basic")
+user_account_context = UserAccountContext(
+    name="theo", 
+    customer_id=1, 
+    tier="basic")
 
 if "session" not in st.session_state:
     st.session_state["session"] = SQLiteSession(
-        session_id="user_1", db_path="customer-support-agent.db"
+        session_id="user_1",
+        db_path="customer-support-agent.db",
     )
 
 session = st.session_state["session"]
@@ -48,19 +50,28 @@ async def run_agent(prompt):
     with st.chat_message("ai"):
         text_placeholder = st.empty()
         response = ""
-        stream = Runner.run_streamed(
-            triage_agent, prompt, session=session, context=user_account_context
-        )
 
-        async for event in stream.stream_events():
-            if event.type == "raw_response_event":
+        try:
+            stream = Runner.run_streamed(
+                triage_agent,
+                prompt,
+                session=session,
+                context=user_account_context,
+            )
 
-                if event.data.type == "response.output_text.delta":
-                    response += event.data.delta
-                    text_placeholder.write(response)
+            async for event in stream.stream_events():
+                if event.type == "raw_response_event":
+
+                    if event.data.type == "response.output_text.delta":
+                        response += event.data.delta
+                        text_placeholder.write(response)
+        except InputGuardrailTripwireTriggered:
+            st.write("질문에 답변할 수 없습니다")
 
 
-prompt = st.chat_input("Agent에게 질문해 주세요.")
+prompt = st.chat_input(
+    "Agent에게 질문해 주세요."
+    )
 
 if prompt:
 

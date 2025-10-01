@@ -1,12 +1,16 @@
 from pydantic import BaseModel
+from typing import Optional
 
 
 class UserAccountContext(BaseModel):
+
     name: str
     customer_id: int
-    tier: str = "base"
+    tier: str = "basic"
+    email: Optional[str] = None
 
 
 class InputGuardRailOutput(BaseModel):
-    output_info: str
-    tripwire_triggered: bool
+
+    reason: str
+    is_off_topic: bool

@@ -166,7 +166,7 @@ def scrape_tool(url: str):
 ## 💬 4. chatgpt-clone
 
 - 프로젝트명: "chatgpt-clone"
-- 설명: Streamlit 기반의 채팅 UI를 사용해, ChatGPT를 완벽 복제한 Agent.
+- 설명: Streamlit 기반의 채팅 UI를 사용해, ChatGPT를 완벽 복제한 Agent.  
   `OpenAI Agent SDK`를 활용해 웹 검색(WebSearchTool)과 파일 검색(FileSearchTool) 등등을을 결합합니다. 대화 이력은 로컬 SQLite에 저장되며, 스트리밍 응답과 진행 상태 표시를 제공합니다.
 
 ### 실행
