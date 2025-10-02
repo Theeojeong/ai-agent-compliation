@@ -4,8 +4,15 @@ from agents import (
     RunContextWrapper,
     GuardrailFunctionOutput,
     input_guardrail,
+    handoff,
 )
 from models import UserAccountContext, InputGuardRailOutput
+from my_agents import (
+    account_agent,
+    billing_agent,
+    order_agent,
+    technical_agent,
+)
 
 input_guardrail_agent = Agent(
     name="Input Guardrail Agent",
@@ -22,11 +29,7 @@ async def off_topic_guardrail(
     agent: Agent[UserAccountContext],
     input: str,
 ):
-    result = await Runner.run(
-        input_guardrail_agent, 
-        input, 
-        context=wrapper.context
-    )
+    result = await Runner.run(input_guardrail_agent, input, context=wrapper.context)
 
     return GuardrailFunctionOutput(
         output_info=result.final_output,
@@ -35,8 +38,7 @@ async def off_topic_guardrail(
 
 
 def dynamic_triage_agent_instructions(
-    wrapper: RunContextWrapper[UserAccountContext], 
-    agent=Agent[UserAccountContext]
+    wrapper: RunContextWrapper[UserAccountContext], agent=Agent[UserAccountContext]
 ):
     return f"""
     You are a customer support agent. You ONLY help customers with their questions about their User Account, Billing, Orders, or Technical Support.
@@ -91,11 +93,23 @@ def dynamic_triage_agent_instructions(
     - Unclear issues: Ask 1-2 clarifying questions before routing
     """
 
+def handle_handoff():
+
+
+def make_handoff(agent):
+    return handoff(
+        agent=agent,
+        on_handoff=handle_handoff,
+        input_type=,
+        input_filter=,
+    )
 
 triage_agent = Agent(
     name="Triage_Agent",
     instructions=dynamic_triage_agent_instructions,
-    input_guardrails=[
-        off_topic_guardrail
+    input_guardrails=[off_topic_guardrail],
+    handoffs=[
+        handoff(agent=account_agent, input_filter= ,),
+        handoff(),
     ],
 )
