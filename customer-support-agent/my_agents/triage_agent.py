@@ -5,20 +5,36 @@ from agents import (
     GuardrailFunctionOutput,
     input_guardrail,
     handoff,
+    HandoffInputFilter,
 )
-from models import UserAccountContext, InputGuardRailOutput
-from my_agents import (
-    account_agent,
-    billing_agent,
-    order_agent,
-    technical_agent,
+from textwrap import dedent
+import streamlit as st
+from agents.extensions import handoff_filters
+from models import (
+    UserAccountContext,
+    InputGuardRailOutput,
+    HandoffData,
 )
+from my_agents.technical_agent import technical_agent
+from my_agents.account_agent import account_agent
+from my_agents.billing_agent import billing_agent
+from my_agents.order_agent import order_agent
+from tools import AgentToolUsageLoggingHooks
 
 input_guardrail_agent = Agent(
     name="Input Guardrail Agent",
-    instructions="""
-    Ensure the user's request specifically pertains to User Account details, Billing inquiries, Order information, or Technical Support issues, and is not off-topic. If the request is off-topic, return a reason for the tripwire. You can make small conversation with the user, specially at the beginning of the conversation, but don't help with requests that are not related to User Account details, Billing inquiries, Order information, or Technical Support issues.
-""",
+    instructions=dedent(
+        """
+    Ensure the user's request specifically pertains to User Account details, 
+    Billing inquiries, Order information, or Technical Support issues, and is not off-topic.
+    If the request is off-topic, return a reason for the tripwire. 
+
+    You can make small conversation with the user, 
+    specially at the beginning of the conversation, 
+    but don't help with requests that are not related to User Account details, 
+    Billing inquiries, Order information, or Technical Support issues.
+"""
+    ).strip(),
     output_type=InputGuardRailOutput,
 )
 
@@ -29,7 +45,11 @@ async def off_topic_guardrail(
     agent: Agent[UserAccountContext],
     input: str,
 ):
-    result = await Runner.run(input_guardrail_agent, input, context=wrapper.context)
+    result = await Runner.run(
+        input_guardrail_agent,
+        input,
+        context=wrapper.context,
+    )
 
     return GuardrailFunctionOutput(
         output_info=result.final_output,
@@ -93,23 +113,39 @@ def dynamic_triage_agent_instructions(
     - Unclear issues: Ask 1-2 clarifying questions before routing
     """
 
-def handle_handoff():
+
+def handle_handoff(
+    wrapper: RunContextWrapper[UserAccountContext],
+    input_data: HandoffData,
+):
+    with st.sidebar:
+        st.write(
+            f"""
+            #Handing off to {input_data.to_agent_name}
+            #Reason {input_data.reason}
+            #Issue Type {input_data.issue_type}
+            #Issue Description {input_data.issue_description}
+            """
+        )
 
 
 def make_handoff(agent):
     return handoff(
         agent=agent,
         on_handoff=handle_handoff,
-        input_type=,
-        input_filter=,
+        input_type=HandoffData,
+        input_filter=handoff_filters.remove_all_tools,
     )
+
 
 triage_agent = Agent(
     name="Triage_Agent",
     instructions=dynamic_triage_agent_instructions,
     input_guardrails=[off_topic_guardrail],
     handoffs=[
-        handoff(agent=account_agent, input_filter= ,),
-        handoff(),
+        make_handoff(account_agent),
+        make_handoff(billing_agent),
+        make_handoff(order_agent),
+        make_handoff(technical_agent),
     ],
 )

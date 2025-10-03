@@ -1,3 +1,4 @@
+from unittest import TextTestResult
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -10,25 +11,32 @@ from agents import (
     SQLiteSession,
     RunContextWrapper,
     InputGuardrailTripwireTriggered,
+    OutputGuardrailTripwireTriggered,
 )
 from models import UserAccountContext
 from my_agents.triage_agent import triage_agent
 
-
 client = openai.OpenAI()
 
+# ========================User Info=========================
+
 user_account_context = UserAccountContext(
-    name="theo", 
-    customer_id=1, 
-    tier="basic")
+    name="JEONG JAEHYEON",
+    customer_id=1,
+    tier="Premium",
+)
+
+# ========================UI=========================
 
 if "session" not in st.session_state:
     st.session_state["session"] = SQLiteSession(
         session_id="user_1",
         db_path="customer-support-agent.db",
     )
-
 session = st.session_state["session"]
+
+if "agent" not in st.session_state:
+    st.session_state["agent"] = triage_agent
 
 
 async def paint_history():
@@ -45,11 +53,15 @@ async def paint_history():
 
 asyncio.run(paint_history())
 
+# ========================Main=========================
+
 
 async def run_agent(prompt):
     with st.chat_message("ai"):
         text_placeholder = st.empty()
         response = ""
+
+        st.session_state['text_placeholder'] = text_placeholder
 
         try:
             stream = Runner.run_streamed(
@@ -65,19 +77,38 @@ async def run_agent(prompt):
                     if event.data.type == "response.output_text.delta":
                         response += event.data.delta
                         text_placeholder.write(response)
+
+                elif event.type == "agent_updated_stream_event":
+                    if st.session_state["agent"].name != event.new_agent.name:
+
+                        st.write(
+                            f"🤖 Transfered from @{st.session_state['agent'].name} to @{event.new_agent.name}",
+                        )
+
+                        st.session_state["agent"] == event.new_agent
+
+                        text_placeholder = st.empty()
+
+                        st.session_state['text_placeholder'] = text_placeholder
+                        response = ""
+
         except InputGuardrailTripwireTriggered:
             st.write("질문에 답변할 수 없습니다")
+        except OutputGuardrailTripwireTriggered:
+            st.write("질문에 답변할 수 없습니다")
+            st.session_state["text_placeholder"] = st.empty()
 
 
-prompt = st.chat_input(
-    "Agent에게 질문해 주세요."
-    )
+prompt = st.chat_input("Agent에게 질문해 주세요.")
 
 if prompt:
 
     with st.chat_message("human"):
         st.write(prompt)
     asyncio.run(run_agent(prompt))
+
+
+# ========================SideBar=========================
 
 with st.sidebar:
     reset = st.button("Reset memory")
