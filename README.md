@@ -1,8 +1,8 @@
 # 🧠 실사용 중심 AI Agent 컬렉션
 
-실제 업무/학습 환경에서 바로 쓸 수 있는 에이전트들을 만들어 보았습니다.
+실제 업무 환경에서 바로 쓸 수 있는 에이전트를 실습하기 위한 프로젝트입니다.
 
-포함된 에이전트: `content-pipline-agent`, `job-hunter-agent`, `news-reader-agent`
+포함된 에이전트: `content-pipline-agent`, `job-hunter-agent`, `news-reader-agent`, `chatgpt-clone-agent`, `customer-support-agent`, `finance-analyst`
 
 ---
 
@@ -252,7 +252,7 @@ triage_agent = Agent(
 
 ## 🎧 6. finance-analyst
 
-- 프로젝트명: "finance-analyst"
+- 프로젝트명: "finance-analyst-agent"
 - 사용 프레임워크: `Google ADK` `yfinance`
 
 개발 진행 중...
