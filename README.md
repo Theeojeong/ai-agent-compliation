@@ -9,6 +9,7 @@
 ## 📦 1. content-pipline-agent
 
 - 프로젝트명: "content-pipline-agent"
+- 사용 프레임워크: `crewai` `Firecrawl`
 - 설명: Firecrawl 기반의 신뢰도 높은 웹 검색/스크랩 툴을 갖춘 콘텐츠 리서치 Agent.
 
 ### 설치 및 실행
@@ -56,6 +57,7 @@ def web_search_tool(query: str):
 ## 💼 2. job-hunter-agent
 
 - 프로젝트명: "job-hunter-agent"
+- 사용 프레임워크: `crewai` `Firecrawl`
 - 설명: 공고 수집 → 매칭 점수화 → 포지션 선택 → 이력서 rewrite → 기업 분석 → 면접 준비까지 이어지는 풀 파이프라인 멀티 Agent.
 
 ### 설치 및 실행
@@ -117,6 +119,7 @@ class ChosenJob(BaseModel):
 ## 📰 3. news-reader-agent
 
 - 프로젝트명: "news-reader-agent"
+- 사용 프레임워크: `crewai` `Playwright`
 - 설명: 주제 기반 뉴스 수집 → 3단계 요약(Headline/Executive/Comprehensive) → 에디토리얼 큐레이션 자동화. Serper 검색 + Playwright 스크랩으로 폭넓고 신뢰도 높은 수집을 수행하는 Agent.
 
 ### 설치 및 실행
@@ -166,8 +169,9 @@ def scrape_tool(url: str):
 ## 💬 4. chatgpt-clone
 
 - 프로젝트명: "chatgpt-clone"
+- 사용 프레임워크: `OpenAI Agent SDK` `mcp-server`
 - 설명: Streamlit 기반의 채팅 UI를 사용해, ChatGPT를 완벽 복제한 Agent.  
-  `OpenAI Agent SDK`를 활용해 웹 검색(WebSearchTool)과 파일 검색(FileSearchTool) 등등을을 결합합니다. 대화 이력은 로컬 SQLite에 저장되며, 스트리밍 응답과 진행 상태 표시를 제공합니다.
+  웹 검색(WebSearchTool)과 파일 검색(FileSearchTool), 이미지 생성(ImageGenerationTool), 코드 인터프리터(CodeInterpreterTool), 호스트된 MCP(HostedMCPTool)을 결합한 Agent. 대화 이력은 로컬 SQLite에 저장되며, 스트리밍 응답과 진행 상태 표시를 제공합니다.
 
 ### 실행
 
@@ -196,8 +200,64 @@ session = SQLiteSession("user1", "user-memory.db")
 - 웹/파일 검색 호출 시 상태 메시지로 진행 상황 가시화
 - 로컬 SQLite(`user-memory.db`)에 대화 메모리 영구 저장
 
+
 ---
 
+## 🎧 5. customer-support-agent
+
+- 프로젝트명: "customer-support-agent"
+- 사용 프레임워크: `OpenAI Agent SDK`
+- 설명: 고객 문의를 Triage → 전문 에이전트(Technical/Billing/Order/Account)로 라우팅하는 실사용형 멀티 Agent.  
+Streamlit 채팅 UI, 사이드바 도구 로그, 입력/출력 가드레일, SQLite 세션 저장을 제공합니다.
+
+### 설치 및 실행
+
+```bash
+cd customer-support-agent
+uv sync
+touch .env
+uv run streamlit run main.py
+```
+
+필요 API Key: `OPENAI_API_KEY`
+
+### 중요한 코드
+
+triage → 전문 에이전트 핸드오프 구조:
+
+```python
+# triage_agent: 입력 가드레일 + 4개 도메인 에이전트로 handoff
+triage_agent = Agent(
+    name="Triage_Agent",
+    instructions=dynamic_triage_agent_instructions,
+    input_guardrails=[off_topic_guardrail],
+    handoffs=[
+        make_handoff(account_agent),
+        make_handoff(billing_agent),
+        make_handoff(order_agent),
+        make_handoff(technical_agent),
+    ],
+)
+```
+
+요점
+
+- Streamlit 채팅 UI + 사이드바에 도구 실행/핸드오프 로그 시각화
+- 입력 가드레일: 오프토픽 질문 차단(`off_topic_guardrail`)
+- 출력 가드레일: 기술 지원 응답에 청구/계정/주문 정보 혼입 시 차단
+- 도구 세트: 기술 진단, 결제 이력/환불, 주문 조회/반품, 계정 보안/변경 등 `@function_tool`로 구성
+- 세션 영속화: 로컬 SQLite(`customer-support-agent.db`)에 대화 저장
+
+---
+
+## 🎧 6. finance-analyst
+
+- 프로젝트명: "finance-analyst"
+- 사용 프레임워크: `Google ADK` `yfinance`
+
+개발 진행 중...
+
+---
 ## 🙌 기여 방법
 
 ```bash
