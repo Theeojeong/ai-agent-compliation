@@ -11,3 +11,4 @@ wheels/
 .env
 /memo
 chatgpt-clone/reference/*
+reference/*
