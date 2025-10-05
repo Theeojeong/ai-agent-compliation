@@ -1,3 +1,4 @@
+from google.adk.tools import AgentTool
 from google.adk.agents import Agent
 from google.adk.models.lite_llm import LiteLlm
 
@@ -10,5 +11,6 @@ weather_agent = Agent(
     instruction="You help the user with weather related questions",
     model=MODEL,
 )
+
 
 root_agent = weather_agent
