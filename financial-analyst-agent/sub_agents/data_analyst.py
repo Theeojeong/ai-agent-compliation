@@ -1,4 +1,4 @@
-from google.adk.agents import Agent
+from google.adk.agents import LlmAgent
 from google.adk.models.lite_llm import LiteLlm
 import yfinance as yf
 
@@ -85,7 +85,7 @@ def get_stock_price(ticker: str, period: str):
     info = stock.info
     history = stock.history(period=period)
     return{
-        "ticker": stock,
+        "ticker": ticker,
         "success": True,
         "history": history.to_json(),
         "current_price": info.get("currentPrice")
@@ -101,12 +101,12 @@ def get_financial_metrics(ticker: str):
         "success": True,
         "market_cap": info.get("marketCap", "NA"),
         "pe_ratio": info.get("trailingPE", "NA"),
-        "dividend_yield": info.get("dividendYiled", "NA"),
+        "dividend_yield": info.get("dividendYield", "NA"),
         "beta": info.get("beta", "NA")
     }
 
 
-data_analyst = Agent(
+data_analyst = LlmAgent(
     name="DataAnalyst",
     description="Gathers and analyzes basic stock market data using multiple focused tools",
     model=MODEL,
@@ -125,5 +125,5 @@ data_analyst = Agent(
         get_stock_price,
         get_financial_metrics,
     ],
-    output_key="data_analyst_result"
+    output_key="data_analyst_result",
 )
