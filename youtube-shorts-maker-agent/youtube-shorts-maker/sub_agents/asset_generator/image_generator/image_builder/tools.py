@@ -10,7 +10,7 @@ async def generate_images(tool_context: ToolContext):
     prompt_builder_output = tool_context.state.get("prompt_builder_output")
     optimized_prompts = prompt_builder_output.get("optimized_prompts")
 
-    existing_artifacts = tool_context.list_artifacts()
+    existing_artifacts = await tool_context.list_artifacts()
 
     generated_images = []
 
@@ -44,7 +44,7 @@ async def generate_images(tool_context: ToolContext):
 
         artifact = types.Part(
             inline_data=types.Blob(
-                mine_type="image/jpeg",
+                mime_type="image/jpeg",
                 data=image_bytes,
             )
         )
@@ -63,7 +63,7 @@ async def generate_images(tool_context: ToolContext):
         )
 
     return {
-        "total_images": len(generate_images),
+        "total_images": len(generated_images),
         "generated_images": generated_images,
         "status": "complete",
     }
