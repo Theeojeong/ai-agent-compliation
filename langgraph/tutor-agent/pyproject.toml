@@ -1,10 +1,11 @@
 [project]
-name = "multi-agent-architectures"
+name = "tutor-agent"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "firecrawl-py==2.16",
     "grandalf==0.8",
     "langchain[openai]==0.3.27",
     "langgraph==0.6.6",
