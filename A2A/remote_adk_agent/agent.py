@@ -1,3 +1,7 @@
+from dotenv import load_dotenv
+
+load_dotenv()
+
 from google.adk.agents import LlmAgent
 from google.adk.models.lite_llm import LiteLlm
 from google.adk.a2a.utils.agent_to_a2a import to_a2a
@@ -10,4 +14,4 @@ agent = LlmAgent(
     sub_agents=[]
 )
 
-app = to_a2a(agent=agent)
+app = to_a2a(agent=agent, port=8001)
