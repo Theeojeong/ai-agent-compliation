@@ -1,0 +1,586 @@
+**이미지 1 — 업스테이지 | Requirements**
+
+필수 사항
+
+- AI 및 Machine Learning에 대한 이해 — 특히 NLP (LLM), CV 분야의 지식 보유
+- Agentic AI에 대한 이해
+- LLM을 사용한 프로젝트 수행 경험: 문제 정의부터 모델 설계, 평가, 최적화 등 전 과정을 주도해 본 경험
+- (정규직) LLM을 사용한 실제 제품을 개발해본 경험
+
+우대 사항
+
+- 최신 LLM 관련 기술들을 기반으로 한 Agent 시스템 설계 및 구현 경험
+- Chain-of-Thought, Multi-step Reasoning 등을 활용한 Complex Reasoning 파이프라인 설계 경험
+- LangChain, LangGraph 등 최신 Agentic Workflow 프레임워크 경험자
+- Retrieval-Augmented Generation (RAG), Tool Use, Function Calling 등을 활용한 파이프라인 설계 및 튜닝 경험
+- 주요 국제 AI 학회에 제1저자 또는 교신저자로 논문 발표 경험
+    - E.g. ICLR, NeurIPS, ICML, EMNLP, ACL, NAACL, CVPR, ICCV, ECCV, AAAI, IJCAI 등
+- 국내외 AI 대회(예: Kaggle 등)에서 상위권 입상 경험
+- 영문 기술 문서 작성 및 글로벌 커뮤니케이션 역량 (글로벌 고객 대응 경험이 있다면 더욱 우대)
+- 관련 문의사항은 joinstage@upstage.ai로 문의 부탁드립니다.
+
+*CV를 포함한 모든 제출 자료는 PDF 형식으로 업로드 해주시기 바랍니다.
+
+*지원자의 민감 정보(연령 정보, 주민번호 등) 및 고유식별번호는 이력서에 기재하지 않도록 유의해주시기를 바랍니다.*
+
+주요 업무
+
+- 고객의 문서 워크플로우 관련 문제를 해결하는 Agent 기반 제품 설계 및 개발
+- 최신 LLM/VLM 그리고 Agentic 아키텍처 등을 제품에 전략적으로 적용
+- 고객의 문제를 파악하고 이를 정형화된 문제로 정의
+- 문제를 해결할 수 있는 기술을 평가하기 위한 벤치마크 구축
+
+**이미지 2 — 뤼튼 AX**
+
+자격요건
+
+- 어떤 영역에서든 상위 1%의 역량을 증명해보신 분
+- Researcher mindset을 가지신 분 (깊은 사고력, 창의력, 끈기 있고 명석한 자기주도형 인재)
+- AI 기술에 대한 이해도가 높으신 분. 만약 없더라도, 새로운 지식/기술에 대한 2주 이내 빠른 온보딩에 자신 있으신 분
+- 삶에 있어서 일이 정말 중요하신 분
+- 빠른 학습 능력을 가지고 있으신 분
+- 정확한 소통을 하시는 분
+- 높은 업무 강도에 대한 회복 탄력성을 가지신 분
+- 기술을 통한 비즈니스 임팩트를 만들어 보신 분
+- Python에 능숙하신 분
+- OpenAI SDK, Vercel AI SDK 등 LLM 관련 라이브러리를 활용한 애플리케이션 구현 경험이 있으신 분
+
+우대사항
+
+- Agentic AI를 개발해본 경험이 있으신 분
+- Kubernetes 등 컨테이너 기반 환경에 대한 이해가 있으신 분
+- 클라우드 서비스에 대한 이해가 있으신 분 (AWS Batch, EKS, S3, Elasticache 등)
+- 대규모 데이터 처리 작업에 대한 이해가 있으신 분 (Kafka, Airflow, GCP Bigquery 등)
+- Elasticsearch, OpenSearch 등 벡터검색 사용에 익숙하신 분
+- 기본적인 SQL 작성 및 대규모 데이터의 쿼리에 능하신분
+- 메시지큐(예: Kafka, SQS, RabbitMQ)를 활용한 비동기 처리를 구현한 경험이 있으신 분
+- 수학, 물리, 정보 올림피아드 수상 실적이 있으신 분
+
+**이미지 3 — 뤼튼 Wrtn Labs**
+
+자격 요건
+
+- 어떤 영역에서든 상위 1%의 역량을 증명해 보신 분
+- Researcher mindset을 가지신 분 (깊은 사고력, 창의력, 끈기 있고 명석한 자기 주도형 인재)
+- AI 기술에 대한 이해도가 높으신 분. 만약 없더라도, 새로운 지식/기술에 대한 2주 이내 빠른 온보딩에 자신 있으신 분
+- 삶에 있어서 일이 정말 중요하신 분
+- 빠른 학습 능력을 가지고 있으신 분
+- 정확한 소통을 하시는 분
+- 높은 업무 강도에 대한 회복 탄력성을 가지신 분
+- 기술을 통한 비즈니스 임팩트를 만들어 보신 분
+- Node.js에 능숙하신 분
+- OpenAI SDK, Vercel AI SDK 등 LLM 관련 라이브러리를 활용한 애플리케이션 구현 경험이 있으신 분
+
+우대사항
+
+- Agentic AI를 개발해 본 경험이 있으신 분
+- Kubernetes 등 컨테이너 기반 환경에 대한 이해가 있으신 분
+- 클라우드 서비스에 대한 이해가 있으신 분(AWS Batch, EKS, S3, ElastiCache 등)
+- 대규모 데이터 처리 작업에 대한 이해가 있으신 분(Kafka, Airflow, GCP Bigquery 등)
+- Elasticsearch, Opensearch 등 벡터검색 사용에 익숙하신 분
+- 기본적인 SQL 작성 및 대규모 데이터의 쿼리에 능하신 분
+- 메시지큐(예: Kafka, SQS, RabbitMQ)를 활용한 비동기 처리를 구현한 경험이 있으신 분
+- 수학, 물리, 정보 올림피아드 수상 실적이 있으신 분
+
+**이미지 4 — 토스**
+
+이런 분과 함께하고 싶어요
+
+- ML 및 DL에 대한 기본 지식과 관심이 풍부하면 좋아요.
+- VectorDB, NoSQL과 같이 ML 기반의 대용량 서비스를 위한 인프라에 대한 경험이 있으면 좋아요.
+- Kubernetes 환경에서 시스템을 운영해본 경험이 있으면 좋아요.
+- 복잡한 문제를 이해하기 쉽게 설명 가능한 커뮤니케이션 역량을 갖춘 분이면 좋아요.
+- 다양한 상황에서 다양한 솔루션을 고민해보고, 최적의 방법을 찾을 수 있는 문제해결 능력을 갖추신 분일수록 좋아요.
+- 오픈 소스를 단순히 가져다쓰지 않고, 내부 구조를 직접 파악 및 내부 동작의 이해를 쌓은 후 사용하시는 분일수록 좋아요.
+
+**이미지 5 — IBM AI Agent 부트캠프 커리큘럼**
+
+차세대 AI Agent
+
+개발 실무자가 되는
+
+가장 확실한 방법, 업계를
+
+선도하는 글로벌 기업 IBM과 함께!
+
+구분 | 교과목 | 교육 내용
+
+정규교과 (비대면 라이브)
+
+- IBM Application 개발 (Frontend Development)
+    
+    · JavaScript & React
+    
+    · Git & 버전 관리
+    
+- IBM Application 개발 (Backend Development)
+    
+    · Java 프로그래밍
+    
+    · Spring Boot
+    
+    · 데이터베이스 (SQL & NoSQL)
+    
+    · Microservice Architecture & Spring Cloud
+    
+- IBM DevOps & Cloud Native 환경 구축
+    
+    · 리눅스&네트워크 기초
+    
+    · Docker&Kubernetes
+    
+    · CI/CD 파이프라인 구축
+    
+    · AWS Cloud
+    
+- IBM AI Agent
+    
+    · Python 기본 문법
+    
+    · FastAPI
+    
+    · 데이터 처리 & 분석
+    
+    · LLM & LMM
+    
+    · 음성 인식 & 텍스트 분석
+    
+    · AI 모델 배포 & 운영
+    
+- IBM Course
+    
+    · IBM Cloud
+    
+    · Red Hat OpenShift on IBM Cloud
+    
+    · IBM watsonx.ai
+    
+    · IBM watsonx Assistant
+    
+    · IBM watsonx Code Assistant
+    
+
+프로젝트 (오프라인)
+
+- Cloud Native Dev Project
+    
+    · Cloud Native 기반 공유 주거(Co-Living) 플랫폼 개발
+    
+    · Cloud Native 기반 통합 이벤트 관리 플랫폼 개발
+    
+- Cloud Native Dev base AI Agent Project
+    
+    · Cloud Native 기반 AI agent 서비스 개발
+    
+
+**이미지 6 — 금융권 AI Agent 개발**
+
+포지션 및 자격요건
+
+python 개발자 고급 (2명)
+
+담당업무
+
+- 구축된 생성형 AI Platform을 기반으로 사용자가 사용할 수 있는 UI를 포함한 AI Agent를 개발
+- 기업/기관 영업지원 Agent (기관정보 분석, RFP 분석 등)
+- 고객경험관리 Agent (설문기획, 보고서, 데이터분석, Voc 관리)
+
+근무지역
+
+- 여의도
+
+근무기간
+
+- 2025-09-15 ~ 2025-12-31 (3.5MM / 이후 연장 가능성 있음)
+
+스킬
+
+- Python, FastAPI, Node.js, Open webUI 경험
+
+자격요건
+
+- 학력: 학력무관
+- 경력: 경력9년↑
+- 에이전트 호출 / 세션 관리 개발 경험
+- 실시간 응답(스트리밍) 처리 경험
+- Azure / AWS / GCP 환경에서 서비스 배포 경험, CI/CD 경험
+
+우대사항
+
+- 탁월한 문제해결, 비판적 사고, 의사소통 능력
+- 고객 만족과 고품질에 대한 강한 지향성 및 책임감
+
+희망 단가 제안 바랍니다.
+
+**이미지 7 — [한국ESG데이터] AI Agent 개발자 신입 채용**
+
+(LLM)을 활용한 AI Agent 서비스를 개발합니다. 국내 대기업·중견기업과 공공기관을 중심으로 고객을 확대하며 지속가능경영 분야의 문제를 컨설팅과 소프트웨어 및 기타 AI 솔루션으로 해결하고 있습니다.
+
+주요업무
+
+- LLM 기반 AI Agent 기능 개발 및 개선
+- AI Workflow 오케스트레이션 설계 (예: LangChain, Semantic Kernel, n8n 등)
+- 내부 플랫폼과의 API 연동 및 서비스 통합
+- 벡터DB, RAG(Retrieval-Augmented Generation) 기반 검색/질의 기능 개발
+- 데이터 수집·전처리 및 간단한 AI 모델 학습/튜닝 지원
+- 팀 내 코드 리뷰 및 기술 문서화 참여
+
+자격요건
+
+- 컴퓨터공학, 인공지능, 데이터사이언스, 소프트웨어 관련 학위(학사 이상) 또는 이에 준하는 역량 보유
+- Python, JavaScript(Node.js) 중 최소 1개 언어 활용 가능
+- Git/GitHub 등 형상관리 도구 활용 경험
+- 기본적인 AI/ML 개념 이해 (NLP, RAG, LLM, Embedding 등)
+- 새로운 기술 학습에 대한 높은 열정과 문제 해결 능력
+
+우대사항
+
+- LangChain, LlamaIndex, Semantic Kernel 등 AI Agent 프레임워크 사용 경험
+- OpenAI, Anthropic, HuggingFace 등 LLM API 활용 경험
+- FastAPI, Spring 등 백엔드 프레임워크 경험
+- Docker, Kubernetes 등 클라우드·컨테이너 환경 경험
+- 해커톤, 심화전시, 오픈소스 프로젝트 참여 경험
+- 영어 기술 문서 독해 및 협업 능력
+
+**이미지 8 — [삼양식품] DXT팀 AI Agent Builder**
+
+[삼양식품] DXT팀 AI Agent Builder
+
+삼양식품의 DXT(Digital eXperience with Technology)팀은 급격히 성장하는 K-Food와 Buldak의 성장을 발판삼아 새로운 방식의 혁신을 전개하는 인재를 갖고 있습니다. Project Piehands의 플랫폼은 미국 Creator Ecosystem을 혁신하는 새로운 서비스를 개발하고 있습니다. 유연하고 팀주도에 기반한 협업으로, 아이디어가 곧 실행으로 이어지는 과정을 경험해보세요!
+
+About Project Piehands
+
+Project Piehands는 2025 4분기 미국 오픈 베타를 목표로 마이크로/나노 틱톡커(팔로워 1K~50K)와 브랜드를 연결하는 바이럴 콘텐츠 매칭 플랫폼을 만드는 프로젝트입니다.
+
+틱톡커는 아이디어 고갈과 낮은 수익화 문제로 어려움을 겪고 있습니다. Project Piehands의 플랫폼은 실제로 바이럴될 확률이 높은 구조화된 콘텐츠 아이디어를 제공하여 틱톡커가 콘텐츠 제작에 온전히 집중하고 수익화까지 이어지도록 돕습니다.
+
+브랜드는 마이크로/나노 틱톡커를 대규모로 활성화하기 어렵습니다. Project Piehands의 플랫폼을 통해 브랜드는 기존 인플루언서 계약이나 비용이 많이 드는 에이전시를 통하지 않고도 트렌디하고 높은 도달을 가진 인가 바이럴 콘텐츠를 손쉽게 얻을 수 있습니다.
+
+Why this matters
+
+‘AI를 활용한다’는 말은 많지만, ‘AI Native 팀’으로 일하는 방식을 근본부터 바꾸는 팀은 거의 없습니다. 우리는 단순한 기능 개발을 넘어, AI 에이전트를 통해 팀의 워크플로우와 프로젝트의 본질 자체를 혁신하는 실험을 시작했습니다.
+
+이 역할은 ‘AI Native 전환의 선봉장’으로서 팀의 새로운 운영체계를 설계하는 아키텍트가 될 것입니다. AI 에이전트를 통해 팀의 생산성과 속도, 나아가 프로젝트가 고객에게 주는 가치를 완전히 새로운 차원으로 끌어올릴 돌파구를 찾고 있습니다.
+
+How we work
+
+- AI 에이전트를 단순한 도구를 넘어, 핵심 동료로 생각합니다. 우리는 모든 워크플로우를 인간과 AI 에이전트의 협업을 전제로 설계하고 발전시킵니다.
+- 가설을 실제 작동하는 결과물로 증명합니다. 우리는 긴 토론 대신, 아이디어를 즉시 검증하는 작은 에이전트나 빌드를 통해 가장 효율적인 답을 찾습니다.
+- 내부 효율화와 프로덕트 개발을 동등하게 중요하게 생각합니다. 팀의 생산성을 높이는 자동화 시스템 역시 고객에게 제공하는 핵심 기능만큼 중요하게 여기며, 지속적으로 개선합니다.
+
+Role & Responsibility
+
+- AI 에이전트 설계 및 개발: 팀의 반복적인 업무나 복잡한 의사결정을 대신할 수 있는 AI 에이전트를 직접 설계하고 개발하여, 팀원들이 더 중요한 문제에 집중할 수 있는 환경을 만듭니다.
+- 프로덕트 가치 증대: 틱톡 트렌드 분석, 바이럴 영상 분석, 크리에이터 온보딩 심사 등 프로덕트의 핵심 경험을 자동화하고 지능화하는 에이전트를 직접 만듭니다.
+- 새로운 워크플로우 정의 및 확산: AI 에이전트를 통해 기존의 일하는 방식을 완전히 새롭게 정의하고, 팀 전체가 AI Native로 거듭나는 여정을 이끌어갑니다.
+
+**이미지 9 — 업무 및 자격 요건**
+
+함께하시면 함께 할 업무입니다.
+
+- AI Agent 시스템 설계 및 개발을 담당합니다.
+- LLM API(Open AI GPT, Claude, Gemini 등)를 활용한 기능 구현을 담당합니다.
+- LangGraph, LangChain, CrewAI 등 LLM 프레임워크 기반의 에이전트 아키텍처 구축을 담당합니다.
+- 프롬프트 엔지니어링 및 워크플로우 자동화 도구 구현을 담당합니다.
+- 마이크로서비스 아키텍처 기반 시스템 연동 및 API 설계를 담당합니다.
+
+이런 경험을 가진 분을 찾습니다.
+
+- OpenAI GPT, Claude, Gemini 등 LLM API 활용 경험이 있으신 분을 찾습니다.
+- LangGraph, LangChain, PydanticAI, CrewAI 등 LLM 프레임워크 사용 경험이 있으신 분을 찾습니다.
+- Agent 아키텍처 설계 및 구현 경험이 있으신 분을 찾습니다.
+- 워크플로우 자동화 도구 구현 경험이 있으신 분을 찾습니다.
+- 프롬프트 엔지니어링 및 최적화 경험이 있으신 분을 찾습니다.
+- RESTful API 개발 및 연동 경험이 있으신 분을 찾습니다.
+- 마이크로서비스 아키텍처에 대한 이해를 갖춘 분을 찾습니다.
+
+이런 경험을 우대합니다.
+
+- 컴퓨터공학, 소프트웨어공학 또는 관련 전공 학사 이상이신 분
+- 관련 분야 1년 이상 실무 경험을 보유하신 분
+- 머신러닝 또는 컴퓨터 비전 관련 경험을 보유하신 분
+- 챗봇, 대화형 AI 시스템 개발 경험을 보유하신 분
+- 비동기 프로그래밍 및 동시성 처리 경험을 보유하신 분
+
+**이미지 10 — 포지션 및 자격요건 | AI Agent Engineer**
+
+수행업무
+
+- 제조 도메인에 특화된 AI Multi-Agent 서비스 설계 및 개발
+    - 설비에서 수집되는 실시간 데이터의 처리가 가능한 Agent 아키텍처 설계
+- LLM 기반 Agentic Workflow 설계 및 실행 최적화
+    - 사용자 요구사항 기반 Prompt/Context 엔지니어링 및 에이전트 구현
+    - LLM 기반 워크플로우 설계 및 구현(LangGraph 기반 에이전트, n8n·Dify 등 자동화 툴 연계)
+- 멀티모달 데이터 기반의 지능형 Agent 기능 연구 및 개발
+
+지원자격
+
+- 신입: 관련 분야 석사 또는 박사 학위 취득(예정)자
+- 경력: 관련 분야 학위 및 선택 분야 경력 3년 이상 보유자
+- Python 기반 개발 역량 보유자
+
+우대사항
+
+- 관련 국내외 경진대회 입상, 학술발표, 논문게재 경험 보유자
+- Multi-Agent 설계 및 구축 프로젝트 경험 보유자
+- 추론 서버(vLLM, SGLang, TGI)를 사용한 모델 배포 경험
+
+# 이미지 1 — 포지션 및 자격요건 | AI Agent 개발 (0명)
+
+## 담당업무
+
+- 고객사의 AI Agent 개발 대상 업무 및 Data에 대한 이해와 분석
+- AI Agent 개발 전략의 수립
+- AI Agent 개발 및 테스트
+- 기존 혹은 신규 시스템과 AI Agent 연계 개발(API 개발)
+
+## 스킬
+
+- AWS, GCP, JAVA, NoSQL, Python, RDBMS, Spring Boot, RAG, LLMOps, NLP
+
+## 지원자격
+
+- AI Agent 개발 경험 3년 이상
+- 다양한 LLM(설치형, 퍼블릭 서비스형) 활용 서비스 개발 경험
+- Python 개발 역량과 개발 경험
+- AI Agent에 사용할 수 있는 다양한 Python Library/프레임워크에 대한 지식과 사용 경험
+    
+    (특히, LangChain, LangGraph, LangFlow에 대한 지식과 사용경험)
+    
+- RAG 시스템에 대한 지식과 구축 경험
+    
+    ▪ Data 전처리(특히 다양한 형태의 문서 전처리)
+    
+    ▪ Parsing & Chunking의 다양한 전략
+    
+    ▪ Vector DB 설치와 활용
+    
+    ▪ 검색 결과의 정확도를 올리는 다양한 검색 기법
+    
+- Prompt Engineering 지식과 경험
+- AI Agent의 API개발 경험
+
+## 우대사항
+
+- 표, 그래프, 이미지가 포함된 복잡한 문서 전처리 경험
+- FASTAPI, Pandas, Open WebUI 활용 경험
+- Jupyter Notebook 활용 개발 경험
+- Web Architecture에 대한 이해 및 Web 개발 기술 실무 경험
+
+# 이미지 2 — 현대모비스 | 우대사항
+
+- 산업공학, 인공지능, 컴퓨터공학, 통계학 관련 석사 이상 전공자.
+- 생성형 AI 모델(GPT, LLaMa, Qwen 등) 활용 연구 및 서비스 개발 경험
+- 프롬프트 엔지니어링 설계 및 평가 경험
+- API 구축, 클라우드 기반 서비스 배포 경험
+- PyTorch, TensorFlow 등 딥러닝 프레임워크 활용 능력
+- 대규모 데이터셋 구축, 멀티모달 데이터 전처리 및 학습 경험
+- 관련 최신 기술 연구 및 논문 작성 경험
+- Computer Vision 관련 프로젝트 수행 경험
+
+# 이미지 3 — 포스코
+
+## 분야 1. AI Agent Engineer
+
+- 제조 도메인에 특화된 AI Multi-Agent 서비스 설계 및 개발
+    - 설비에서 수집되는 실시간 데이터의 처리가 가능한 Agent 아키텍처 설계
+- LLM 기반 Agentic Workflow 설계 및 실행 최적화
+    - 사용자 요구사항 기반 Prompt/Context 엔지니어링 및 에이전트 구현
+    - LLM 기반 워크플로우 설계 및 구현(LangGraph 기반 에이전트, n8n·Dify 등 자동화 툴 연계)
+- 멀티모달 데이터 기반의 지능형 Agent 기능 연구 및 개발
+
+## 분야 2. RAG System Engineer
+
+- 대규모 문서 및 데이터 기반 RAG 시스템 설계 및 최적화
+- 통합검색엔진/지식그래프 기반의 검색·추론 구조 연구 및 개발
+- AI Agent 시스템에 필요한 청킹 및 검색 기술 설계 및 고도화
+- Embedding, Indexing, Caching 등 검색 성능 최적화 기술 개발
+- RAG 파이프라인 성능 평가 자동화 및 품질 관리 체계 구축
+
+## 분야 3. LLM/VLM Engineer
+
+- SLM 파인튜닝(Full Fine-tuning 및 PEFT 기반 경량 파인튜닝) 및 서빙
+- GPTQ, AWQ, INT4/INT8 등 양자화 기법 및 NPU 기반의 모델 최적화
+- 모델 성능 평가 및 벤치마크 지표 관리, 품질 개선
+- LLM 학습용 데이터 수집 및 처리 프로세스 관리 및 직접 수행
+- 최신 오픈소스/학계 연구 동향을 반영한 모델 아키텍처 검증 및 서비스 적용
+
+NC AI
+
+[업무 내용]
+• AI/ML 플랫폼 개발 업무 (OpenAPI, Agent)
+
+[필수 역량]
+• 5년 이상의 소프트웨어 엔지니어링 경험이 있는 분
+• Python, Go, Java/Kotlin 중 최소 1개 이상의 언어에 능숙한 분
+• AI/ML 플랫폼 또는 관련 소프트웨어에 대한 기술적 이해도가 있는 분
+• 클라우드(GCP/AWS) 및 Kubernetes 환경에서의 서비스 개발/배포/운영 경험이 있는 분
+• 해외 출장 및 근무에 결격 사유 없는 분
+
+[우대 역량]
+• 업무 열정과 오너십이 있고, 팀 플레이가 가능한 분
+• 새로운 기술에 대한 학습 의지가 높고, 변화에 빠르게 적응할 수 있는 분
+• 소스 리뷰에 적극적이며 공유 문화에 익숙한 분
+• 아래 작성된 3가지 분야 중 하나 이상의 실무 경험이 있는 분
+① AI Agent
+
+AI/ML 워크플로우에 대한 이해
+
+OpenAI GPT, Claude, Gemini 등 LLM API 활용 경험
+
+LangGraph, LangChain, PydanticAI, CrewAI 등 LLM 프레임워크 활용 경험
+
+Agent 아키텍처 설계 및 구현/운영 경험
+
+프롬프트 엔지니어링 및 최적화 경험
+
+② Platform Development
+
+MSA 기반 설계/개발/운영 경험
+
+DevOps, 인프라, 백엔드 등 플랫폼 개발 전반에 대한 경험
+
+API Gateway(Kong Gateway) 운영 및 Plug-In 구축 경험
+
+CI/CD 및 모니터링 환경 구축과 운영 경험
+
+③ Data Engineering
+
+데이터 플랫폼 설계 및 구축 경험
+
+Apache Airflow 기반 데이터 파이프라인 개발 및 운영
+
+대용량 데이터 및 실시간 데이터 처리에 대한 이해와 경험(Hadoop/Hive/Spark 등)
+
+
+
+
+42dot
+
+AI Engineer (Agent)
+Pangyo (Software Dream Center), South Korea
+
+About Us 42dot AGI(실)은 42dot의 Cleo AI에 적용되는 LLM 및 Agent 핵심 기술을 개발합니다. Cleo는 차량 내에서 자연스럽고 친근한 대화를 통해 사용자의 의도를 정확하게 처리하며, Memory가 결합된 동적 상호작용을 기반으로 개인화된 사용자 경험을 제공하는 LLM 기반 멀티 모달 인포테인먼트 시스템입니다. 우리는 함께 LLM을 기반으로 Cleo의 새로운 기능을 개발하고 서비스를 확장할 Responsibilities를 가진 AI Engineer를 찾고 있습니다.
+
+Responsibilities
+
+LLM 기반 멀티 에이전트 설계 및 핵심 모듈 개발 (Planning, Function Calling, Memory 등)
+
+서비스 요구사항 분석 및 Agent 구현
+
+서비스를 위한 Post-training 기반 LLM 파인 튜닝 및 최적화
+
+대화/문서 데이터 검색을 위한 Embedding 모델 적용
+
+Qualifications
+
+LLM / NLP 분야 석사 혹은 학사 학위 소지자
+
+LLM / NLP 분야 주요 학술지/학회 1편 이상 소지자
+
+복잡한 문제를 주도적으로 해결한 프로그래밍 역량 (Python 등)
+
+연구/논문 구현 및 개발 경험 (Pytorch, TensorFlow 등)
+
+RAG 기반 정보 검색 시스템을 구축하며, 효과적인 검색 로직 및 정보 정렬 능력을 보여준 분
+
+Prompt/Context Engineering 역량
+
+Preferred Qualifications
+
+대화형 AI 서비스 개발 및 상용 경험이 있으신 분
+
+AI 서비스 비용 최적화 역량 및 노하우가 있으신 분
+
+인공지능 및 백엔드 시스템에 대한 이해와 사용 경험이 있으신 분
+
+대화형 AI 서비스에 대한 관심과 사용 경험, 그리고 인사이트를 보유하신 분
+
+한국어, 영어 외에도 프랑스어, 스페인어 등 다양한 언어의 문제를 풀어본 경험이 있으신 분
+
+효과적인 Prompt Engineering을 통해 LLM의 성능을 최적화 해본 경험이 있으신 분
+
+신규 기술을 신속하게 학습하고 적용 능력이 있으신 분
+
+다양한 이해관계자와의 원활한 커뮤니케이션을 통해, 복잡한 아이디어를 효과적으로 전달하는 분
+
+
+[메가존클라우드] AI Engineer 메가존클라우드 | Tech | AI | Experienced | 2 - 10 Years | Full Time | 조기 입사자 보상금 | Open until filled
+
+[AIR Platform] Unit을 소개합니다!
+
+💡 AIR Platform Unit은?
+AIR Platform Unit은 메가존클라우드의 새로운 AI 브랜드 Megazone AIR의 핵심 축인 Megazone AIR Platform을 개발하고 운영합니다. Megazone AIR Platform은 기업의 생성형 AI 도입을 돕는 No-code/Low-code 기반의 Platform입니다. AI 플랫폼 기술과 관련된 다양한 직군이 함께 일하고 있어요. (AML 엔지니어, 백엔드 개발, 프론트엔드 개발, 검증/인증 엔지니어링, DevOps, UI/UX 디자이너 & 기획자, 프로덕트 매니저 등...)
+
+💡 AI Engineering Unit은?
+AI Engineering Unit은 국내외 및 세계 AI 시장에서 메가존클라우드에 AI 빌더로서 하이퍼-비즈니스 성과 파이프라인을 구축해 왔습니다. 혁신 AI 기술로 신뢰받고 보답하는 것을 목표로 해요.
+
+크게 두 종류의 일에 나뉘어요.
+
+(1)Application 고객의 어려움을 효과적으로 해소하는 AI 기반 문제 해결에 표준을 제시하고, 성공적인 AI 전환을 돕는 역할을 수행합니다. AI 모델을 활용(application)해 비즈니스 문제를 해결하고, 실질적 변화와 성과를 입증하고, 이 과정에서 AI 프로페셔널 서비스를 엔지니어링으로 증명하기도 합니다.
+
+(2)Foundation AI 모델 활용 최적화에 대한 기업의 니즈 외에도, 어려운 문제에 도전하고 세계적 수준의 독창성을 가지는 새로운 AI 모델과 로직(logic)을 연구해요. 현재 수요가 높은 핵심 기술 개발로 Megazone AIR 제품 라인업 확장과 우리 유닛 및 고객 만족의 극대화를 견인해요.
+
+이런 일을 해요!
+고객 및 사내 구성원의 협업을 통한 문제 요구사항 분석 및 human-in-the-loop 시스템 설계 업무를 해요.
+
+신입 및 직무 별 교육 체계 대응 위한 agentic workflow 구성 및 자동 개선 업무를 해요.
+
+고객과의 커뮤니케이션을 위한 documentation 및 기술 검증 업무를 해요.
+
+문제 상황 및 요구사항에 맞는 prompt engineering 업무를 해요.
+
+Large language model(LLM) 및 Large vision model(LVM) finetuning 업무를 해요.
+
+공개 및 사내 모델을 최적화(lightweight) 하는 업무를 해요.
+
+S/W 아키텍처 설계, AI/ML 모델 서빙 및 AI 기반 대화형 및 검색 서비스로 품질 향상 업무를 해요.
+
+최신 AI 논문 재현 및 기법 도입, 사내 AI 기술 문제 해결 thought leadership 확장에 기여하는 역할을 해요.
+
+이런 분과 함께하고 싶어요! 👩‍💻
+컴퓨터과학, 전기 및 전자공학 관련 분야 학사 학위 또는 이에 상응하는 경험치 있는 분이어야 해요.
+
+LangChain, LlamaIndex 등 LLM application 개발 프레임워크 기반의 agentic workflow 구현 경험이 있는 분이어야 해요.
+
+RAG 기본 이론 이해 및 시스템 구축 경험이 있는 분이어야 해요.
+
+Prompt engineering 경험 (zero-shot, few-shot, chain-of-thought 등)이 있는 분이어야 해요.
+
+고객과 직접적인 커뮤니케이션을 통해 비즈니스 문제를 이해하고, 기술적인 해결책을 제시할 수 있는 분이어야 해요.
+
+주어진 문제 요구사항에 적합한 AI 기술 탐색 및 적용 능력이 있는 분이어야 해요.
+
+데이터 및 AI 학습 결과를 정량적/정성적으로 평가하고 분석할 수 있는 능력이 있는 분이어야 해요.
+
+소프트웨어 개발/운영 및 테스트 자동화, CI/CD, Git 등 형상 관리 도구 사용에 대한 기본적인 이해도가 있는 분이어야 해요.
+
+영어 기술 논문 이해 및 구현 능력 이 있는 분이면 좋아요.
+
+아는 것과 모르는 것에 대한 솔직함, 그리고 배움의 열정과 포기하지 않는 어려운 상황에서 동료들과의 유연함과 적극적인 자세를 가진 분이면 좋아요.
+
+AI를 활용한 산업 문제 해결에 즐거우신 분이어야 해요.
+
+이런 경험이 있으면 더 좋아요! 🤩
+오픈소스 AI/ML 라이브러리(HuggingFace 등) 생태계 및 관련 오픈소스 AI 프로젝트 기여 경험이 있으면 더 좋아요.
+
+임베디드/자율 주행, 전기 및 전자공학 관련 분야 석사 학위가 있으면 더 좋아요.
+
+국내/외 기계학습 관련 논문 출판 경험이 있으면 더 좋아요.
+
+최신 AI 기술(LLM, LVM, RAG 등)에 대한 깊은 이해와 실제 프로젝트 적용 경험이 있으면 더 좋아요.
+
+Multimodal LLM 프로젝트 경험이 있는 분이면 더 좋아요.
+
+Container 및 Kubernetes 관련 클라우드 환경에서의 AI 학습 방식 및 시스템 구현 경험이 있으면 더 좋아요.
+
+MLOps 시스템 일체 경험 (Kubeflow, Airflow 등)이 있으면 더 좋아요.
+
+대규모 데이터 파이프라인 처리 및 분산 컴퓨팅 (Spark, Kafka, Elasticsearch 등) 경험이 있으면 더 좋아요.
+
+Extracting text, vector DB, document parsing, chunking 관련 경험이 있는 분이면 더 좋아요.
+
+✨ 실무 면접은 이렇게 준비해 주세요
+직접 주도 또는 기여한 주요 프로젝트 성과물 (1~2개) * "동기(motivation) + 문제(problem) -> 방법(method) -> 결과(result) 순서로 히스토리를 요약 개선 사항(future work)" * 또는 이외 상응하는 효율적인 방식 모두로 어필해 주세요.
+
+실제는 현장에서 화기애애한 캐주얼한 면접 사이닝과 질의응답으로 진행돼요.

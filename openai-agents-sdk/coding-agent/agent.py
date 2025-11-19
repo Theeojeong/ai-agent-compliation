@@ -40,7 +40,6 @@ async def run_updated_coding_agent_with_logs(prompt: str):
 
     apply_patch_seen = False
 
-    # Start streamed run
     result = Runner.run_streamed(
         coding_agent,
         input=prompt,
