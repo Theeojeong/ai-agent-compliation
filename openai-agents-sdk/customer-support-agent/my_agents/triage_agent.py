@@ -10,6 +10,7 @@ from agents import (
 from textwrap import dedent
 import streamlit as st
 from agents.extensions import handoff_filters
+from agents.extensions.visualization import draw_graph
 from models import (
     UserAccountContext,
     InputGuardRailOutput,
@@ -149,3 +150,5 @@ triage_agent = Agent(
         make_handoff(technical_agent),
     ],
 )
+
+# draw_graph(triage_agent, filename="triage_agent_graph")

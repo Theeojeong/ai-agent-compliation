@@ -53,8 +53,8 @@ async def paint_history():
 
 asyncio.run(paint_history())
 
-# ========================Main=========================
 
+# ========================Main=========================
 
 async def run_agent(prompt):
     with st.chat_message("ai"):
@@ -64,9 +64,9 @@ async def run_agent(prompt):
         st.session_state['text_placeholder'] = text_placeholder
 
         try:
-            stream = Runner.run_streamed(
-                triage_agent,
-                prompt,
+            stream = Runner.run_streamed( # Agent
+                starting_agent=triage_agent,
+                input=prompt,
                 session=session,
                 context=user_account_context,
             )

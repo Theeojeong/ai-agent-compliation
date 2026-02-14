@@ -6,10 +6,10 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "numpy>=2.3.2",
-    "openai-agents[voice]>=0.2.8",
+    "openai-agents[viz,voice]>=0.2.8",
     "python-dotenv>=1.1.1",
     "sounddevice>=0.5.2",
-    "streamlit>=1.48.1",
+    "streamlit>=1.52.2",
 ]
 
 [dependency-groups]

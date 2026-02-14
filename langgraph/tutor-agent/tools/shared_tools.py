@@ -21,6 +21,7 @@ def transfer_to_agent(agent_name: str):
         },
     )
 
+
 @tool
 def web_search_tool(query: str):
     """
